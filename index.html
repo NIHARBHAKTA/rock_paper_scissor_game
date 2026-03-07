@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="main-container">
+
+        <div id="user-modal">
+
+            <div id="heading-text-container">
+                <h1>Rock-Paper-Scissor Game</h1>
+            </div>
+
+            <div id="user-choices-container">
+
+                <div class="choice" id="rock">
+                    <img class="image" src="./assets/rock_hand.png" alt="">
+                </div>
+
+                <div class="choice" id="paper">
+                    <img class="image" src="./assets/paper_hand.png" alt="">
+                </div>
+
+                <div class="choice" id="scissor">
+                    <img class="image" src="./assets/scissors_hand.png" alt="">
+                </div>
+
+            </div>
+
+            <div id="footer-text-container">
+                <h1 id="footer-text">Choose Your Move</h1>
+            </div>
+
+        </div>
+
+        <div id="game-modal">
+
+            <div id="heading">
+                <h1>Rock-Paper-Scissor Game</h1>
+            </div>
+
+            <div id="game-container">
+
+                <div id="vs">
+                    <h1>VS</h1>
+                </div>
+
+                <div id="user-choiced-container" class="live-game-container">
+                    <!-- radomly generated and dynamically pushed -->
+                </div>
+
+                <div id="computer-random-container" class="live-game-container">
+                    <!-- radomly generated and dynamically pushed -->
+                    <div id="computer-choiced">
+                        <label id="username">Computer</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="display-scores">
+
+                <div id="score-board">
+
+                    <div id="won">
+                        <h3>Won: 0</h3>
+                    </div>
+
+                    <div id="lost">
+                        <h3>Loose: 0</h3>
+                    </div>
+
+                    <div id="lost">
+                        <h3>Draw: 0</h3>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="buttons">
+                <button id="reset" class="button">Reset</button>
+                <button id="choose-again" class="button">Choose Again</button>
+            </div>
+
+        </div>
+
+        <div id="game-over-modal">
+            <div id="game-over-message">
+                <h3>Game over</h3>
+                <h3>Match draw</h3>
+                <button id="game-over-button">Restart</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
