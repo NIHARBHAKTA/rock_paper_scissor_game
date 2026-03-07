@@ -17,8 +17,8 @@ let restart_button = $("#game-over-button")
 
 const audio = new Audio('click_sound_2.wav');
 audio.playbackRate = 2.0;
-const victory_sound = new Audio("win_sound_1.mp3");
-const loose_sound = new Audio("loose_sound.mp3");
+const victory_sound = new Audio("win_sound_2.mp3");
+const loose_sound = new Audio("loose_sound.mp3");git add .
 const draw_sound = new Audio("draw_sound.wav");
 
 let modal_switch = false;
