@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     user-select: none;
 
 }
@@ -45,11 +45,6 @@ body {
     margin-bottom: 20px;
 }
 
-#heading-text-container h3 {
-    font-size: 40px;
-}
-
-
 #user-choices-container {
     width: 70%;
     height: 55%;
@@ -89,6 +84,7 @@ body {
 .image:hover {
     transform: scale(1.1);
 }
+
 
 
 
@@ -157,7 +153,7 @@ label {
     font-size: 50px;
 }
 
-#user-choiced-image{
+#user-choiced-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -184,12 +180,7 @@ label {
     margin: 50px;
 }
 
-#buttons {
-    /* background-color: red; */
-    display: flex;
-    justify-content: space-between;
-    width: 13%;
-}
+
 
 .button {
     padding: 10px 15px;
@@ -221,40 +212,132 @@ label {
 
 
 
-#game-over-modal{
+
+#game-over-modal {
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    background-color: radial-gradient(circle at top, #1f1f2e, #0f0f17);
     display: flex;
-    align-items: center;
     justify-content: center;
-    /* display: none; */
+    align-items: center;
+    display: none;
 }
 
-#game-over-message{
-    background-color: #8989c085;
-    width: 35%;
-    height: 25%;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+/* Modal box */
+#game-over-message {
+    background: #8989c085;
+    padding: 40px 50px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+    animation: popup 0.8s ease-in-out;
 }
 
-#game-over-message h3{
+/* Text styling */
+#game-over-message h3 {
+    margin: 8px 0;
+
+}
+
+#game-over-message h3:first-child {
+    font-size: 50px;
+    color: white;
+    letter-spacing: 1px;
+}
+
+#game-over-message h3:nth-child(2) {
     font-size: 25px;
-    margin-top: 10px;
-
+    color: #ff0000;
 }
 
-#game-over-button{
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-size: 20px;
+/* Restart button */
+#game-over-button {
+    margin-top: 20px;
+    padding: 12px 28px;
     border: none;
-    margin-top: 50px;
+    border-radius: 8px;
+    background: #3e82ff;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
 }
 
 #game-over-button:hover {
+    background: #2c6ee6;
     transform: scale(1.1);
+}
+
+/* Small popup animation */
+@keyframes popup {
+    from {
+        transform: scale(0);
+
+    }
+
+    to {
+        transform: scale(1);
+
+    }
+}
+
+
+@media (max-width:550px) {
+
+    #user-modal {
+        justify-content: center;
+    }
+
+    #user-choices-container {
+        width: 110px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+
+    }
+
+    #heading-text-container {
+        margin: 50px 10px 0px 10px;
+    }
+
+    #heading-text-container h1 {
+        font-size: 20px
+    }
+
+    #footer-text-container {
+        margin: 50px;
+        text-align: center;
+    }
+
+    #footer-text {
+        font-size: 15px;
+    }
+
+}
+
+
+@media (max-width:145px) {
+
+
+    #user-choices-container {
+        width: 90px;
+    }
+
+    #heading-text-container {
+        margin: 20px 10px 0px 10px;
+    }
+
+    #heading-text-container h1 {
+        font-size: 10px
+    }
+
+    #footer-text-container {
+        margin:10px;
+        text-align: center;
+    }
+    #footer-text {
+        font-size: 10px;
+    }
+
 }

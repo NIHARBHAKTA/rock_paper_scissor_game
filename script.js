@@ -15,10 +15,10 @@ let choose_again_button = $("#choose-again");
 let reset_button = $("#reset");
 let restart_button = $("#game-over-button")
 
-const audio = new Audio('click_sound_2.wav');
+const audio = new Audio('click_sound.wav');
 audio.playbackRate = 2.0;
-const victory_sound = new Audio("win_sound_2.mp3");
-const loose_sound = new Audio("loose_sound.mp3");git add .
+const victory_sound = new Audio("win_sound.mp3");
+const loose_sound = new Audio("loose_sound.wav");
 const draw_sound = new Audio("draw_sound.wav");
 
 let modal_switch = false;
@@ -54,24 +54,26 @@ images_list.addEventListener("click", (e) => {
         return
 
     } else {
+        audio.play();
         modal_switch = true;
+        choose_again_button.disabled = true;
 
         if (modal_switch) {
             let src_attributeName = e.target.getAttribute("src") //storing the src of the image user clicked
 
             if (src_attributeName === "./assets/rock_hand.png") {
                 footer_text.innerText = `You Choosed: Rock`;
-                audio.play();
+                // audio.play();
                 user_picked = "rock";
 
             } else if (src_attributeName === "./assets/paper_hand.png") {
                 footer_text.innerText = `You Choosed: Paper`;
-                audio.play();
+                // audio.play();
                 user_picked = "paper";
 
             } else if (src_attributeName === "./assets/scissors_hand.png") {
                 footer_text.innerText = `You Choosed: Scissor`;
-                audio.play();
+                // audio.play();
                 user_picked = "scissor";
             }
 
@@ -83,26 +85,30 @@ images_list.addEventListener("click", (e) => {
                 user_modal.style.display = "none";
                 game_modal.style.display = "flex";
                 modal_switch = false;
-                // console.log(picked_node.childNodes[3])
-
             }, 2000);
 
-            // picked_node.childNodes[3].classList.add("annimation")
         }
     }
-
 
     random_generated_hand_id = setTimeout(() => {
         random_generated_hand();
         let generated_node = $("#computer-choiced")
         image_generated_node = generated_node.childNodes[3].getAttribute("src")
-        // console.log(generated_node.childNodes[3])
         game_logic()
         render_score()
-    }, 3000);
+        let abc = game_over_modal_logic()
+        if (abc === 0) {
+            choose_again_button.disabled = true;
 
-    // game_over_modal_logic()
+        }else {
+            choose_again_button.disabled = false
+        }
+        
+    }, 3500);
+
+
 })
+
 
 choose_again_button.addEventListener("click", (e) => {
     e.preventDefault()
@@ -129,20 +135,35 @@ choose_again_button.addEventListener("click", (e) => {
 
 })
 
-reset_button.addEventListener("click", () => {
-    won = 0
-    loose = 0
-    draw = 0
-    render_score()
-
-})
-
-
-// restart_button.addEventListener("click", () => {
-//     user_modal.style.display = "flex"
-//     game_over_modal.display = "none"
+// reset_button.addEventListener("click", () => {
+//     won = 0
+//     loose = 0
+//     draw = 0
+//     render_score()
 
 // })
+
+
+restart_button.addEventListener("click", () => {
+    won = 0;
+    loose = 0;
+    draw = 0;
+
+    render_score();
+
+    computer_random_container.innerHTML = "";
+    user_choiced_container.innerHTML = "";
+
+    images_list.style.pointerEvents = "auto";
+    diable_selection = false;
+    choose_again_button.disabled = false;
+
+    footer_text.innerText = "Choose Your Move";
+
+    game_over_modal.style.display = "none";
+    game_modal.style.display = "none";
+    user_modal.style.display = "flex";
+})
 
 
 function random_generated_hand() {
@@ -209,7 +230,7 @@ function game_logic() {
         loose_sound.play()
         loose += 1
 
-    } else if (image_generated_node === "/assets/scissors_hand.png" && user_picked_node === "./assets/paper_hand.png") {
+    } else if (image_generated_node === "./assets/scissors_hand.png" && user_picked_node === "./assets/paper_hand.png") {
         loose_sound.play()
         loose += 1
 
@@ -228,18 +249,21 @@ function render_score() {
 }
 
 function game_over_modal_logic() {
-    if (won === 3) {
-        console.log("won")
-        user_modal.style.display = "none"
-        game_modal.style.display = "none";
-        game_over_modal.style.display = "flex"
-    } else if (loose === 3) {
-        user_modal.style.display = "none"
-        game_modal.style.display = "none";
-        game_over_modal.style.display = "flex"
-    } else if (draw === 3) {
-        user_modal.style.display = "none"
-        game_modal.style.display = "none";
-        game_over_modal.style.display = "flex"
+    if (won === 3 || loose === 3 || draw === 3) {
+        choose_again_button.disabled = true;
+
+        setTimeout(() => {
+
+            game_modal.style.display = "none";
+            game_over_modal.style.display = "flex";
+
+
+
+        }, 5000);
+
+        return 0
     }
+
+
+
 }
