@@ -259,7 +259,7 @@ function game_over_modal_logic() {
 
 
 
-        }, 5000);
+        }, 3000);
 
         return 0
     }
